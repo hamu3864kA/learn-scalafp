@@ -1,0 +1,12 @@
+{
+    "name" : "ScalaSbtFp",
+    "image" : "sbtscala/scala-sbt:eclipse-temurin-focal-17.0.5_8_1.8.2_2.13.10",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack",
+                "scalameta.metals"
+            ]
+        }
+    }
+}
