@@ -8,8 +8,8 @@ object Test01 extends App {
 object Test01 {
 
     def main(args: Array[String]) = {
-        println(isSorted(Array(1, 1, 3, 5, 6), (a: Int, b: Int) => a <= b))
-        println(isSorted(Array(1), (a: Int, b: Int) => a <= b))
+        val f = (a: Int, b: Int) => a + b
+        println(curry(f))
         ()
     }
 
@@ -31,5 +31,13 @@ object Test01 {
             case Array(_*) => isSorted(as.tail, ordered)
         }
     }
+
+    // exercise 2.3
+    def curry[A, B, C](f: (A, B) => C): A => (B => C) = {
+        // 関数を返す
+        a: A => (b: B) => f(a, b)
+    }
+
+
     
 }
