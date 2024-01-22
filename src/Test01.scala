@@ -8,11 +8,13 @@ object Test01 extends App {
 object Test01 {
 
     def main(args: Array[String]) = {
-        val f = (a: Int) => (b: Int) => a + b
-        println(uncurry(f)(1, 2))
+        val f = (a: Int) => a * 2
+        val g = (b: Int) => b + 10
+        println(compose(f, g)(3))
         ()
     }
 
+    // exercise2.1
     // 0, 1, 1, 2, 3, 5
     def fib(i: Integer) = {
         assert(0 < i)
@@ -43,6 +45,9 @@ object Test01 {
         (a: A, b: B) => f(a)(b)
     }
 
-
+    // exercise 2.5
+    def compose[A, B, C](f: B => C, g: A => B): A => C = {
+        (a: A) => f(g(a))
+    }
     
 }
