@@ -8,8 +8,8 @@ object Test01 extends App {
 object Test01 {
 
     def main(args: Array[String]) = {
-        val f = (a: Int, b: Int) => a + b
-        println(curry(f))
+        val f = (a: Int) => (b: Int) => a + b
+        println(uncurry(f)(1, 2))
         ()
     }
 
@@ -36,6 +36,11 @@ object Test01 {
     def curry[A, B, C](f: (A, B) => C): A => (B => C) = {
         // 関数を返す
         a: A => (b: B) => f(a, b)
+    }
+
+    // exercise 2.4
+    def uncurry[A, B, C](f: A => B => C): (A, B) => C = {
+        (a: A, b: B) => f(a)(b)
     }
 
 
